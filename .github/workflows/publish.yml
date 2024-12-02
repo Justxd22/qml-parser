@@ -7,7 +7,6 @@ jobs:
   publish:
     name: Publish for ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         include:
@@ -15,9 +14,12 @@ jobs:
             platform: linux
           - os: macos-latest
             platform: darwin
+          - os: windows-latest
+            platform: windows
 
     steps:
       - name: Set RELEASE_VERSION
+        shell: bash
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - uses: actions/checkout@v2
@@ -27,10 +29,18 @@ jobs:
       - name: Build app
         uses: ./.github/actions/build
 
-      - uses: thedoctor0/zip-release@master
+      - name: Zip Release (Unix-like)
+        if: matrix.platform != 'windows'
+        uses: thedoctor0/zip-release@master
         with:
           directory: dist
           filename: ${{ matrix.platform }}.zip
+
+      - name: Zip Release (Windows)
+        if: matrix.platform == 'windows'
+        shell: powershell
+        run: |
+          Compress-Archive -Path dist\* -DestinationPath dist\windows.zip
 
       - uses: softprops/action-gh-release@v1
         with:

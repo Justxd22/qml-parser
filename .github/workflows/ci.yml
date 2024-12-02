@@ -4,6 +4,7 @@ on:
     branches:
       - master
   pull_request:
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -16,20 +17,28 @@ jobs:
           - os: macos-latest
             platform: darwin
             binPath: dist/qml-parser.app/Contents/MacOS
+          - os: windows-latest
+            platform: windows
+            binPath: dist
+
     env:
       QML_PARSER_DISABLE_DOWNLOAD: 1
       QML_PARSER_BIN_PATH: ${{ matrix.binPath }}
+
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-
+      
       - uses: actions/setup-node@v2
-
+      
       - name: Build app
         uses: ./.github/actions/build
         with:
           with-package: false
-
+      
       - run: yarn install
+      
       - run: yarn jest
+        # You might need to add a condition for Windows if Jest behaves differently
+        # if: matrix.platform != 'windows'

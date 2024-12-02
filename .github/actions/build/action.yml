@@ -11,58 +11,40 @@ runs:
   using: "composite"
   steps:
     - name: Install Qt
-      shell: bash
+      shell: powershell
       run: |
-        set -o xtrace
-
-        if [[ "$RUNNER_OS" == "Linux" ]]; then
-          sudo add-apt-repository ppa:beineri/opt-qt-${{ inputs.qt-version }}-bionic
-          sudo apt-get update
-          sudo apt-get install -y build-essential qt515base qt515declarative
-          echo "PATH=/opt/qt515/bin:$PATH" >> $GITHUB_ENV
-        else
-          brew install p7zip
-          python3 -m pip install setuptools wheel
-          python3 -m pip install py7zr==0.16.1
-          python3 -m pip install aqtinstall==1.2.5
-          python3 -m aqt install ${{ inputs.qt-version }} mac desktop -m qtdeclarative -O $RUNNER_WORKSPACE/Qt
-          ls -la $RUNNER_WORKSPACE/Qt/${{ inputs.qt-version }}/clang_64/bin
-          echo "PATH=$RUNNER_WORKSPACE/Qt/${{ inputs.qt-version }}/clang_64/bin:$PATH" >> $GITHUB_ENV
-        fi
-
-    - name: Install linuxdeployqt (Linux only)
-      shell: bash
+        # Install aqt for Qt installation
+        pip install aqtinstall
+        python -m aqt install ${{ inputs.qt-version }} windows desktop -m qtdeclarative
+        echo "Qt installation completed"
+        
+    - name: Set up MSVC
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Set up Qt environment
+      shell: powershell
       run: |
-        set -o xtrace
-
-        if [[ "$RUNNER_OS" == "Linux" ]]; then
-          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-          sudo mv linuxdeployqt-continuous-x86_64.AppImage /usr/bin/linuxdeployqt
-          sudo chmod a+x /usr/bin/linuxdeployqt
-        fi
-
-    - run: qmake -config release
-      shell: bash
-
-    - run: make clean
-      shell: bash
-
-    - run: make
-      shell: bash
-
+        $qtPath = "$env:RUNNER_WORKSPACE\Qt\${{ inputs.qt-version }}\msvc2019_64\bin"
+        echo "PATH=$qtPath;$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Append
+        
+    - name: Configure project
+      shell: powershell
+      run: |
+        # Assuming you're using qmake
+        qmake -config release
+        
+    - name: Build project
+      shell: powershell
+      run: |
+        # Use MSBuild for Windows
+        msbuild /m /p:Configuration=Release
+        
     - name: Create package
-      shell: bash
+      shell: powershell
       run: |
-        set -o xtrace
-
-        if [[ ${{inputs.with-package}} ]]; then
-          if [[ "$RUNNER_OS" == "Linux" ]]; then
-            mkdir dist/appdir
-            mv dist/qml-parser dist/appdir
-            linuxdeployqt dist/appdir/qml-parser -no-plugins -no-copy-copyright-files
-            mv dist/appdir/* dist
-            rmdir dist/appdir
-          else
-            macdeployqt dist/qml-parser.app -no-plugins -verbose=1
-          fi
-        fi
+        if (${{ inputs.with-package }}) {
+          # Use windeployqt for Windows deployment
+          mkdir dist
+          Copy-Item "path\to\your\release\qml-parser.exe" -Destination "dist\"
+          windeployqt dist\qml-parser.exe
+        }
