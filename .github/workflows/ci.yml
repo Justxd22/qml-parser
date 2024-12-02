@@ -11,12 +11,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-18.04
-            platform: linux
-            binPath: dist
-          - os: macos-latest
-            platform: darwin
-            binPath: dist/qml-parser.app/Contents/MacOS
+          # - os: ubuntu-18.04
+          #   platform: linux
+          #   binPath: dist
+          # - os: macos-latest
+          #   platform: darwin
+          #   binPath: dist/qml-parser.app/Contents/MacOS
           - os: windows-latest
             platform: windows
             binPath: dist

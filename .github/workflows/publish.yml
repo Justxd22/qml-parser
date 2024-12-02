@@ -10,10 +10,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-18.04
-            platform: linux
-          - os: macos-latest
-            platform: darwin
           - os: windows-latest
             platform: windows
 
