@@ -15,7 +15,7 @@ runs:
       run: |
         # Install aqt for Qt installation
         pip install aqtinstall
-        python -m aqt install-qt 5.15.2 windows desktop win64_msvc2019_64 -m qtdeclarative
+        python -m aqt install-qt windows 5.15.2 win64_msvc2019_64 -m qtdeclarative
         echo "Qt installation completed"
         
     - name: Set up MSVC
