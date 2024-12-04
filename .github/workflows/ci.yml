@@ -10,6 +10,9 @@ jobs:
     strategy:
       matrix:
         include:
+          - os: windows-latest
+            platform: windows
+            binPath: dist
           - os: ubuntu-18.04
             platform: linux
             binPath: dist
@@ -27,6 +30,11 @@ jobs:
       - uses: actions/setup-node@v2
 
       - name: Build app
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: ./.github/actions/winbuild
+
+      - name: Build app for other platforms
+        if: ${{ matrix.os != 'windows-latest' }}
         uses: ./.github/actions/build
         with:
           with-package: false
