@@ -26,20 +26,7 @@ runs:
         python -m pip install aqtinstall
         aqt install-qt windows desktop 5.15.2 win64_mingw81
         $env:PATH="$env:GITHUB_WORKSPACE/5.15.2/mingw81_64/bin;$env:PATH"
-
-    - run: D:\a\qml-parser\qml-parser\5.15.2\mingw81_64\bin\qmake.exe -config release
-      shell: pwsh
-
-    - name: Clean build directory
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
-      run: mingw32-make clean
-
-    - name: Compile application
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
-      run: mingw32-make
-
-    - name: Package application
-      shell: pwsh
-      run: windeployqt dist\qml-parser.exe -no-plugins -verbose=1
+        D:\a\qml-parser\qml-parser\5.15.2\mingw81_64\bin\qmake.exe -config release
+        mingw32-make clean
+        mingw32-make
+        windeployqt dist\qml-parser.exe -no-plugins -verbose=1
