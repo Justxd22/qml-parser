@@ -11,9 +11,11 @@ jobs:
     strategy:
       matrix:
         include:
+          - os: windows-latest
+            platform: windows
           - os: ubuntu-18.04
             platform: linux
-          - os: macos-latest
+          - os: macos-12
             platform: darwin
 
     steps:
@@ -25,7 +27,14 @@ jobs:
           submodules: true
 
       - name: Build app
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: ./.github/actions/winbuild
+
+      - name: Build app for other platforms
+        if: ${{ matrix.os != 'windows-latest' }}
         uses: ./.github/actions/build
+        with:
+          with-package: false
 
       - uses: thedoctor0/zip-release@master
         with:
