@@ -12,13 +12,13 @@ jobs:
         include:
           - os: windows-latest
             platform: windows
-            binPath: dist
+            binPath: dist\qml-parser.exe
           - os: ubuntu-18.04
             platform: linux
-            binPath: dist
+            binPath: dist/qml-parser
           - os: macos-13
             platform: darwin
-            binPath: dist/qml-parser.app/Contents/MacOS
+            binPath: dist/qml-parser.app/Contents/MacOS/qml-parser
     env:
       QML_PARSER_DISABLE_DOWNLOAD: 1
       QML_PARSER_BIN_PATH: ${{ matrix.binPath }}
