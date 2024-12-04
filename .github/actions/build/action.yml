@@ -22,10 +22,13 @@ runs:
           echo "PATH=/opt/qt515/bin:$PATH" >> $GITHUB_ENV
         else
           brew install p7zip
-          python3 -m pip install setuptools wheel --break-system-packages
-          python3 -m pip install py7zr==0.16.1 --break-system-packages
-          python3 -m pip install aqtinstall==1.2.5 --break-system-packages
-          python3 -m aqt install ${{ inputs.qt-version }} mac desktop -m qtdeclarative -O $RUNNER_WORKSPACE/Qt
+          pyenv install 3.12.1
+          pyenv global 3.12.1
+          python3.12 -m pip install pyzstd
+          python3.12 -m pip install setuptools wheel --break-system-packages
+          python3.12 -m pip install py7zr==0.16.1 --break-system-packages
+          python3.12 -m pip install aqtinstall==1.2.5 --break-system-packages
+          python3.12 -m aqt install ${{ inputs.qt-version }} mac desktop -m qtdeclarative -O $RUNNER_WORKSPACE/Qt
           ls -la $RUNNER_WORKSPACE/Qt/${{ inputs.qt-version }}/clang_64/bin
           echo "PATH=$RUNNER_WORKSPACE/Qt/${{ inputs.qt-version }}/clang_64/bin:$PATH" >> $GITHUB_ENV
         fi
