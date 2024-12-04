@@ -16,7 +16,7 @@ jobs:
           - os: ubuntu-18.04
             platform: linux
             binPath: dist
-          - os: macos-12
+          - os: macos-13
             platform: darwin
             binPath: dist/qml-parser.app/Contents/MacOS
     env:
