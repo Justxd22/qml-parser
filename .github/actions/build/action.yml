@@ -21,7 +21,7 @@ runs:
           sudo apt-get install -y build-essential qt515base qt515declarative
           echo "PATH=/opt/qt515/bin:$PATH" >> $GITHUB_ENV
         else
-          brew install p7zip
+          brew install pyenv
           pyenv install 3.12.1
           pyenv global 3.12.1
           python3.12 -m pip install pyzstd
