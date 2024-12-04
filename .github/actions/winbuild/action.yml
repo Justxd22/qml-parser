@@ -25,7 +25,7 @@ runs:
       run: |
         python -m pip install aqtinstall
         aqt install-qt windows desktop 5.15.2 win64_mingw81
-        echo "PATH=$GITHUB_WORKSPACE/5.15.2/mingw81_64/bin:$PATH" >> $GITHUB_ENV
+        $env:PATH="$env:GITHUB_WORKSPACE/5.15.2/mingw81_64/bin;$env:PATH"
 
     - run: qmake -config release
       shell: pwsh
