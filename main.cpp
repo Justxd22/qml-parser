@@ -36,10 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 int main(int argc, char *argv[]) {
   QCoreApplication app(argc, argv);
   QCoreApplication::setApplicationName("qml-parser");
-
-#ifdef QML_PARSER_VERSION
-  QCoreApplication::setApplicationVersion(QML_PARSER_VERSION);
-#endif // QML_PARSER_VERSION
+  QCoreApplication::setApplicationVersion("2.1.6");
 
   QCommandLineParser parser;
   parser.setApplicationDescription(
