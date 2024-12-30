@@ -3,6 +3,7 @@ QT += qml-private
 QT -= gui
 
 CONFIG += c++11
+CONFIG += debug
 
 TARGET = qml-parser
 DESTDIR = dist
