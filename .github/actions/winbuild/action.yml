@@ -24,7 +24,9 @@ runs:
       shell: pwsh
       run: |
         choco uninstall mingw -y
+        Remove-Item -Recurse -Force "C:/mingw64"
         choco install mingw
+        $env:PATH = "C:\ProgramData\mingw64\mingw32\bin;" + $env:PATH
         mingw32-make -v
         g++ -v
         python -m pip install aqtinstall
