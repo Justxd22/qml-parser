@@ -27,6 +27,7 @@ runs:
         aqt install-qt windows desktop 5.15.2 win64_mingw81
         $env:PATH="$env:GITHUB_WORKSPACE/5.15.2/mingw81_64/bin;$env:PATH"
         D:\a\qml-parser\qml-parser\5.15.2\mingw81_64\bin\qmake.exe
-        mingw32-make clean
-        mingw32-make
+        # mingw32-make clean
+        # mingw32-make
+        nmake
         windeployqt dist\qml-parser.exe -no-plugins -verbose=1
