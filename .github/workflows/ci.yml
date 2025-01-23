@@ -19,9 +19,6 @@ jobs:
           - os: macos-13
             platform: darwin
             binPath: dist/qml-parser.app/Contents/MacOS/qml-parser
-    env:
-      QML_PARSER_DISABLE_DOWNLOAD: 1
-      QML_PARSER_BIN_PATH: ${{ matrix.binPath }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,9 +26,9 @@ jobs:
 
       - uses: actions/setup-node@v2
 
-      # - name: Build app
-      #   if: ${{ matrix.os == 'windows-latest' }}
-      #   uses: ./.github/actions/winbuild
+      - name: Build app
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: ./.github/actions/winbuild
 
       - name: Build app for other platforms
         if: ${{ matrix.os != 'windows-latest' }}
@@ -39,11 +36,10 @@ jobs:
         with:
           with-package: false
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: build/
 
-#      - run: yarn install
-#      - run: yarn jest
+      - run: npm install
+      - run: npm test
+
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3

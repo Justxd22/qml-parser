@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "identifier": "QtQuick",
       "kind": "Import",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 18,
           "line": 1,
           "offset": 18,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 1,
           "offset": 0,
@@ -20,17 +20,17 @@ Object {
       },
       "version": "2.0",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "kind": "ObjectIdentifier",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 10,
               "line": 4,
               "offset": 42,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 4,
               "offset": 34,
@@ -38,31 +38,31 @@ Object {
           },
           "value": "self",
         },
-        Object {
+        {
           "identifier": "test",
           "kind": "Property",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 34,
               "line": 6,
               "offset": 79,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 6,
               "offset": 47,
             },
           },
           "type": "alias",
-          "value": Object {
+          "value": {
             "kind": "JavascriptValue",
-            "loc": Object {
-              "end": Object {
+            "loc": {
+              "end": {
                 "column": 34,
                 "line": 6,
                 "offset": 79,
               },
-              "start": Object {
+              "start": {
                 "column": 24,
                 "line": 6,
                 "offset": 69,
@@ -75,13 +75,13 @@ Object {
       ],
       "identifier": "Rectangle",
       "kind": "ObjectDefinition",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 1,
           "line": 8,
           "offset": 83,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 3,
           "offset": 20,
@@ -89,15 +89,15 @@ Object {
       },
     },
   ],
-  "comments": Array [],
+  "comments": [],
   "kind": "Program",
-  "loc": Object {
-    "end": Object {
+  "loc": {
+    "end": {
       "column": 0,
       "line": 9,
       "offset": 84,
     },
-    "start": Object {
+    "start": {
       "column": 0,
       "line": 1,
       "offset": 0,

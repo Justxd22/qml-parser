@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "identifier": "QtQuick",
       "kind": "Import",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 18,
           "line": 1,
           "offset": 18,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 1,
           "offset": 0,
@@ -20,32 +20,32 @@ Object {
       },
       "version": "2.0",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "identifier": "KeyNavigation.tab",
           "kind": "Attribute",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 25,
               "line": 5,
               "offset": 58,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 5,
               "offset": 35,
             },
           },
-          "value": Object {
+          "value": {
             "kind": "JavascriptValue",
-            "loc": Object {
-              "end": Object {
+            "loc": {
+              "end": {
                 "column": 25,
                 "line": 5,
                 "offset": 58,
               },
-              "start": Object {
+              "start": {
                 "column": 21,
                 "line": 5,
                 "offset": 54,
@@ -55,30 +55,30 @@ Object {
             "value": "this",
           },
         },
-        Object {
+        {
           "identifier": "Keys.onEscapePressed",
           "kind": "Attribute",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 3,
               "line": 9,
               "offset": 105,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 7,
               "offset": 63,
             },
           },
-          "value": Object {
+          "value": {
             "kind": "JavascriptBlock",
-            "loc": Object {
-              "end": Object {
+            "loc": {
+              "end": {
                 "column": 3,
                 "line": 9,
                 "offset": 105,
               },
-              "start": Object {
+              "start": {
                 "column": 24,
                 "line": 7,
                 "offset": 85,
@@ -93,13 +93,13 @@ Object {
       ],
       "identifier": "Rectangle",
       "kind": "ObjectDefinition",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 1,
           "line": 11,
           "offset": 108,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 3,
           "offset": 20,
@@ -107,15 +107,15 @@ Object {
       },
     },
   ],
-  "comments": Array [],
+  "comments": [],
   "kind": "Program",
-  "loc": Object {
-    "end": Object {
+  "loc": {
+    "end": {
       "column": 0,
       "line": 12,
       "offset": 109,
     },
-    "start": Object {
+    "start": {
       "column": 0,
       "line": 1,
       "offset": 0,

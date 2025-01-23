@@ -1,41 +1,47 @@
 name: "Build Win app"
 description: "Builds the application with Qt on various platforms"
-inputs:
-  with-package:
-    description: "Enable or disable packaging"
-    required: true
-    default: true
-  qt-version:
-    description: "Qt version"
-    required: false
-    default: "5.15.2"
 runs:
   using: "composite"
   steps:
-    # - name: Set up MinGW
-    #   if: matrix.os == 'windows-latest'
-    #   uses: egor-tensin/setup-mingw@v2.2.0
-    #   with:
-    #     version: 12.2.0 
-    #     arch: x86_64
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          allow-prereleases: false
 
-    - name: Install Qt and dependencies on Windows
-      if: ${{ matrix.os == 'windows-latest' }}
-      shell: pwsh
-      run: |
-        choco uninstall mingw -y
-        Remove-Item -Recurse -Force "C:/mingw64"
-        choco install mingw
-        refreshenv
-        $env:PATH = "C:\ProgramData\mingw64\mingw32\bin;" + $env:PATH
-        refreshenv
-        Write-Output $env:PATH
-        mingw32-make -v
-        g++ -v
-        python -m pip install aqtinstall
-        aqt install-qt windows desktop 5.15.2 win64_mingw81
-        $env:PATH="$env:GITHUB_WORKSPACE/5.15.2/mingw81_64/bin;$env:PATH"
-        D:\a\qml-parser\qml-parser\5.15.2\mingw81_64\bin\qmake.exe
-        mingw32-make clean
-        mingw32-make
-        windeployqt dist\qml-parser.exe -no-plugins -verbose=1
+      - name: Setup Visual Studio 2022
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Setup Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: 5.15.2
+          modules: qtbase qttools qtdeclarative
+          host: windows
+          target: desktop
+          setup-python: false
+
+      - name: Configure environment
+        shell: cmd
+        run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          set PATH=%PATH%;C:\Qt\Tools\QtCreator\bin
+
+      - name: Set up MSVC environment
+        shell: cmd
+        run: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+
+      - name: Build
+        shell: cmd
+        run: |
+          qmake
+          nmake
+          windeployqt dist\qml-parser.exe --no-compiler-runtime --no-translations -no-plugins -verbose=1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qml-parser-windows
+          path: dist\

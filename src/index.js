@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 function getBinPath() {
   switch (platform()) {
     case "darwin":
-      return join(__dirname, "../vendor/Contents/MacOS/qml-parser");
+      return join(__dirname, "../vendor/qml-parser.app/Contents/MacOS/qml-parser");
     case "linux":
       return join(__dirname, "../vendor/qml-parser");
     case "win32":

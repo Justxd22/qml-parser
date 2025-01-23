@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "as": "QQ",
       "identifier": "QtQuick",
       "kind": "Import",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 24,
           "line": 1,
           "offset": 24,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 1,
           "offset": 0,
@@ -21,33 +21,33 @@ Object {
       },
       "version": "2.0",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "identifier": "test1",
           "kind": "Property",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 31,
               "line": 5,
               "offset": 73,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 5,
               "offset": 44,
             },
           },
           "type": "QQ.Item",
-          "value": Object {
+          "value": {
             "kind": "JavascriptValue",
-            "loc": Object {
-              "end": Object {
+            "loc": {
+              "end": {
                 "column": 31,
                 "line": 5,
                 "offset": 73,
               },
-              "start": Object {
+              "start": {
                 "column": 27,
                 "line": 5,
                 "offset": 69,
@@ -57,16 +57,16 @@ Object {
             "value": "null",
           },
         },
-        Object {
+        {
           "identifier": "test2",
           "kind": "Property",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 31,
               "line": 7,
               "offset": 107,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 7,
               "offset": 78,
@@ -75,24 +75,24 @@ Object {
           "type": "QQ.Text",
           "typeModifier": "list",
         },
-        Object {
+        {
           "asBrackets": true,
           "identifier": "test3",
           "kind": "Signal",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 29,
               "line": 9,
               "offset": 138,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 9,
               "offset": 111,
             },
           },
-          "parameters": Array [
-            Object {
+          "parameters": [
+            {
               "identifier": "arg",
               "type": "QQ.Image",
             },
@@ -101,13 +101,13 @@ Object {
       ],
       "identifier": "QQ.Rectangle",
       "kind": "ObjectDefinition",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 1,
           "line": 11,
           "offset": 142,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 3,
           "offset": 26,
@@ -115,15 +115,15 @@ Object {
       },
     },
   ],
-  "comments": Array [],
+  "comments": [],
   "kind": "Program",
-  "loc": Object {
-    "end": Object {
+  "loc": {
+    "end": {
       "column": 0,
       "line": 12,
       "offset": 143,
     },
-    "start": Object {
+    "start": {
       "column": 0,
       "line": 1,
       "offset": 0,

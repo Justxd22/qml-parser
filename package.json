@@ -33,7 +33,8 @@
     "unzipper": "^0.12.3"
   },
   "scripts": {
-    "postinstall": "node scripts/install.js"
+    "postinstall": "node scripts/install.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   }, 
   "type": "module"
 }

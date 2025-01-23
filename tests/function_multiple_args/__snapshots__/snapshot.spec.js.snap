@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "identifier": "QtQuick",
       "kind": "Import",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 18,
           "line": 1,
           "offset": 18,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 1,
           "offset": 0,
@@ -20,21 +20,21 @@ Object {
       },
       "version": "2.0",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "body": "function test (arg1, arg2) {
     return 0
   }",
           "identifier": "test",
           "kind": "Function",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 3,
               "line": 7,
               "offset": 80,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 5,
               "offset": 35,
@@ -44,13 +44,13 @@ Object {
       ],
       "identifier": "Rectangle",
       "kind": "ObjectDefinition",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 1,
           "line": 9,
           "offset": 83,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 3,
           "offset": 20,
@@ -58,15 +58,15 @@ Object {
       },
     },
   ],
-  "comments": Array [],
+  "comments": [],
   "kind": "Program",
-  "loc": Object {
-    "end": Object {
+  "loc": {
+    "end": {
       "column": 0,
       "line": 10,
       "offset": 84,
     },
-    "start": Object {
+    "start": {
       "column": 0,
       "line": 1,
       "offset": 0,

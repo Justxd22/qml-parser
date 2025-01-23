@@ -35,9 +35,6 @@ bool Foobar::debug = true;
 void Foobar::setDebug(bool debug_) { Foobar::debug = debug_; }
 
 int Foobar::InternalRun(const QString &code) {
-  std::cout << "Input::\n";
-  std::cout << code.toStdString();
-  std::cout << "::End::\n";
   QQmlJS::Engine engine;
   QQmlJS::Lexer lexer(&engine);
 

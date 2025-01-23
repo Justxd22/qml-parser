@@ -5,8 +5,9 @@ import semver from 'semver';
 import * as unzipper from 'unzipper';
 import { pipeline } from 'stream/promises';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 import * as dotenv from 'dotenv';
+import { cpSync } from 'fs';
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ const pkg = JSON.parse(
 );
 
 const supportedPlatforms = ["darwin", "linux", "win32"];
+const distPath = resolve(__dirname, '../dist');
+const installPath = resolve(__dirname, '../vendor');
 
 function getBinaryUrl() {
   const endpoint = "https://github.com/justxd22/qml-parser/releases/download";
@@ -34,17 +37,18 @@ function getBinaryUrl() {
     : `${endpoint}/v${version}/${platform}.zip`;
 }
 
-async function main() {
-  if (process.env.QML_PARSER_DISABLE_DOWNLOAD) {
-    console.log(
-      '[INFO] Skipping binary download. "QML_PARSER_DISABLE_DOWNLOAD" environment variable was found.'
-    );
-    return;
+async function copyFromDist() {
+  console.log("[INFO] Copying binaries from dist folder...");
+  if (fs.existsSync(installPath)) {
+    fs.rmSync(installPath, { recursive: true });
   }
+  fs.mkdirSync(installPath, { recursive: true });
+  cpSync(distPath, installPath, { recursive: true });
+  console.log("[INFO] Binaries copied successfully.");
+}
 
+async function downloadAndExtract() {
   const binaryUrl = getBinaryUrl();
-  const installPath = `${__dirname}/../vendor`;
-
   console.log("[INFO] Downloading binary from", binaryUrl);
 
   if (fs.existsSync(installPath)) {
@@ -79,6 +83,14 @@ async function main() {
   }
   if (process.platform !== "win32") {
     chmodSync(`${installPath}/qml-parser`, "+x");
+  }
+}
+
+async function main() {
+  if (fs.existsSync(distPath) && fs.readdirSync(distPath).length > 0) {
+    await copyFromDist();
+  } else {
+    await downloadAndExtract();
   }
 }
 

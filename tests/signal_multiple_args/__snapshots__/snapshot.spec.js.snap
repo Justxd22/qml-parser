@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "identifier": "QtQuick",
       "kind": "Import",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 18,
           "line": 1,
           "offset": 18,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 1,
           "offset": 0,
@@ -20,30 +20,30 @@ Object {
       },
       "version": "2.0",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "asBrackets": true,
           "identifier": "test",
           "kind": "Signal",
-          "loc": Object {
-            "end": Object {
+          "loc": {
+            "end": {
               "column": 38,
               "line": 5,
               "offset": 71,
             },
-            "start": Object {
+            "start": {
               "column": 2,
               "line": 5,
               "offset": 35,
             },
           },
-          "parameters": Array [
-            Object {
+          "parameters": [
+            {
               "identifier": "arg1",
               "type": "string",
             },
-            Object {
+            {
               "identifier": "arg2",
               "type": "bool",
             },
@@ -52,13 +52,13 @@ Object {
       ],
       "identifier": "Rectangle",
       "kind": "ObjectDefinition",
-      "loc": Object {
-        "end": Object {
+      "loc": {
+        "end": {
           "column": 1,
           "line": 7,
           "offset": 75,
         },
-        "start": Object {
+        "start": {
           "column": 0,
           "line": 3,
           "offset": 20,
@@ -66,15 +66,15 @@ Object {
       },
     },
   ],
-  "comments": Array [],
+  "comments": [],
   "kind": "Program",
-  "loc": Object {
-    "end": Object {
+  "loc": {
+    "end": {
       "column": 0,
       "line": 8,
       "offset": 76,
     },
-    "start": Object {
+    "start": {
       "column": 0,
       "line": 1,
       "offset": 0,
